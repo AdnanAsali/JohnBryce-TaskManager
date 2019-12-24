@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>TODO-List</title>
+</head>
+
+<body>
+
+    <div class="title-image">
+        <img src="./images/title.png">
+    </div>
+    <div class="task-manager">
+        <form>
+            <input placeholder="Enter Task" type="text" name="task--content" class="task-content" required>
+            <input type="date" name="task--date" class="task-date" required>
+            <input type="time" name="task--time" class="task-time" required>
+            <input type="button" class="submit" value="Submit Task">
+            <input type="button" class="reset" value="Reset Form">
+        </form>
+    </div>
+
+    <div class="result"></div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
