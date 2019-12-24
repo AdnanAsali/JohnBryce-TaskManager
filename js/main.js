@@ -27,7 +27,7 @@ submitButton.addEventListener('click', () => {
 
         for (let i = 0; i < parsed_tasks.length; i++) {
             taskDiv.innerHTML =
-                `<span class="close glyphicon glyphicon-remove"></span>
+                `<span name="${parsed_tasks[i].taskID}" class="close glyphicon glyphicon-remove"></span>
             <div class="text-area">${parsed_tasks[i].taskContent}</div>
             <div class="date-time-container">
                 <div class="date-area">${parsed_tasks[i].taskDate}</div>
@@ -50,9 +50,26 @@ submitButton.addEventListener('click', () => {
                 wrappers_closers[i].style.display = "none";
             });
 
-            wrappers_closers[i].addEventListener('click', () => {
-                wrappers_closers[i].parentNode.style.display = 'none';
-            });
+            // wrappers_closers[i].addEventListener('click', () => {
+            //     wrappers_closers[i].parentNode.style.display = 'none';
+
+            //     console.log('tttt');
+            //     console.log(wrappers_closers[i].parentNode.getAttribute("name"));
+            //     parsed_tasks = JSON.parse(localStorage.getItem("taskData"));
+
+            //     for (let j = 0; j < parsed_tasks.length; j++) {
+
+            //         if (parsed_tasks[j].taskID === wrappers_closers[i].parentNode.getAttribute("name")) {
+            //             var index = array.indexOf();
+            //             if (index > -1) {
+            //                 parsed_tasks.splice(index, 1);
+
+            //             }
+            //         }
+
+            //     }
+            //     localStorage.setItem("taskData", JSON.stringify(array_tasks));
+            // });
         }
         console.log(array_tasks)
     } else {
@@ -75,7 +92,7 @@ window.onload = () => {
         taskDiv.classList.add("task-wrapper");
 
         taskDiv.innerHTML =
-            `<span class="close glyphicon glyphicon-remove"></span>
+            `<span name="${stored_tasks[i].taskID}" class="close glyphicon glyphicon-remove"></span>
     <div class="text-area">${stored_tasks[i].taskContent}</div>
     <div class="date-time-container">
         <div class="date-area">${stored_tasks[i].taskDate}</div>
@@ -90,7 +107,6 @@ window.onload = () => {
     }
 
 
-
     var wrappers = document.querySelectorAll('.task-wrapper');
     var wrappers_closers = document.querySelectorAll('.task-wrapper .close');
 
@@ -103,8 +119,31 @@ window.onload = () => {
             wrappers_closers[i].style.display = "none";
         });
 
+        // wrappers_closers[i].addEventListener('click', () => {
+        //     wrappers_closers[i].parentNode.style.display = 'none';
+        // });
+
         wrappers_closers[i].addEventListener('click', () => {
             wrappers_closers[i].parentNode.style.display = 'none';
+
+            console.log('tttt');
+            console.log(wrappers_closers[i].getAttribute('name'));
+            parsed_tasks = JSON.parse(localStorage.getItem("taskData"));
+
+            for (let j = 0; j < parsed_tasks.length; j++) {
+
+                if (parsed_tasks[j].taskID == wrappers_closers[i].getAttribute('name')) {
+                    var index = parsed_tasks.indexOf(parsed_tasks[j]);
+                    console.log(index)
+                    if (index > -1) {
+                        parsed_tasks.splice(index, 1);
+                    }
+                }
+
+            }
+
+            console.log(parsed_tasks)
+            localStorage.setItem("taskData", JSON.stringify(parsed_tasks));
         });
     }
 }
